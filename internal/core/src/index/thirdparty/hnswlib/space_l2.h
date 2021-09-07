@@ -1,5 +1,5 @@
 #pragma once
-#include <faiss/FaissHook.h>
+#include <faiss/faiss/FaissHook.h>
 
 namespace hnswlib {
 
