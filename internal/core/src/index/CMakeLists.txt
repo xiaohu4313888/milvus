@@ -46,6 +46,11 @@ set(INDEX_SOURCE_DIR ${PROJECT_SOURCE_DIR})
 set(INDEX_BINARY_DIR ${PROJECT_BINARY_DIR})
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${INDEX_SOURCE_DIR}/cmake")
 
+# This will set RPATH to all excutable TARGET
+# self-installed dynamic libraries will be correctly linked by excutable
+set( CMAKE_INSTALL_RPATH "/usr/lib" "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}" )
+set( CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE )
+
 include(ExternalProject)
 include(DefineOptionsCore)
 include(BuildUtilsCore)
@@ -72,6 +77,7 @@ if (MILVUS_SUPPORT_SPTAG)
 endif ()
 
 include(ThirdPartyPackagesCore)
+add_subdirectory(thirdparty)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -fPIC -DELPP_THREAD_SAFE -fopenmp")
