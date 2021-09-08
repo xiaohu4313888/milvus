@@ -28,8 +28,8 @@
 #include <vector>
 
 #include <string.h>
-#include <faiss/faiss/utils/ConcurrentBitset.h>
-#include <faiss/faiss/utils/BitsetView.h>
+#include <faiss/utils/ConcurrentBitset.h>
+#include <faiss/utils/BitsetView.h>
 
 namespace hnswlib {
     typedef int64_t labeltype;
