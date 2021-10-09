@@ -41,9 +41,6 @@ if(NOT TARGET fiu)
     add_subdirectory(fiu)
 endif()
 
-# ****************************** Thirdparty Arrow ***************************************
-add_subdirectory( arrow )
-
 # ****************************** Thirdparty NGT ***************************************
 add_subdirectory(NGT)
 
@@ -165,21 +162,6 @@ macro(build_faiss)
 endmacro()
 
 if (KNOWHERE_WITH_FAISS AND NOT TARGET faiss_ep)
-    if (FAISS_WITH_MKL)
-        if (MKL_SOURCE STREQUAL "AUTO")
-            find_package(MKL MODULE)
-            if (NOT MKL_FOUND})
-                build_mkl()
-            endif ()
-        elseif (MKL_SOURCE STREQUAL "BUNDLED")
-            build_faiss()
-        elseif (MKL_SOURCE STREQUAL "SYSTEM")
-            find_package(FAISS_FOUND REQUIRED)
-        endif ()
-    else ()
-        message("faiss with no mkl")
-    endif ()
-
     if (FAISS_SOURCE STREQUAL "AUTO")
         find_package(FAISS MODULE)
         if (NOT FAISS_FOUND})

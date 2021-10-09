@@ -51,7 +51,6 @@ set (LOG_SRC
 add_library(index_log STATIC ${LOG_SRC})
 set_target_properties(index_log PROPERTIES RULE_LAUNCH_COMPILE "")
 set_target_properties(index_log PROPERTIES RULE_LAUNCH_LINK "")
-#include_directories(${KNOWHERE_THIRDPARTY_SRC})
 
 set(config_srcs
         knowhere/archive/KnowhereConfig.cpp
